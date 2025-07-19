@@ -8,6 +8,18 @@ use App\Http\Controllers\Authentification\PasswordController;
 use App\Http\Controllers\Authentification\ProfileController;
 use App\Http\Controllers\StatistiquesController;
 use App\Http\Controllers\SecteurController;
+use App\Http\Controllers\EntrepriseController;
+use App\Http\Controllers\UtilisateurStatsController;
+// Statistiques utilisateur
+Route::get('utilisateur/{id}/consultations', [UtilisateurStatsController::class, 'nombreConsultations']);
+Route::get('utilisateur/{id}/avis', [UtilisateurStatsController::class, 'nombreAvis']);
+Route::get('utilisateur/{id}/historique', [UtilisateurStatsController::class, 'historiqueConsultations']);
+// CRUD Entreprise avec upload logo
+Route::get('entreprises', [EntrepriseController::class, 'index']);
+Route::get('entreprises/{id}', [EntrepriseController::class, 'show']);
+Route::post('entreprises', [EntrepriseController::class, 'store']);
+Route::put('entreprises/{id}', [EntrepriseController::class, 'update']);
+Route::delete('entreprises/{id}', [EntrepriseController::class, 'destroy']);
 
 // Secteurs populaires
 Route::get('secteurs/populaires', [SecteurController::class, 'secteursPopulaires']);
