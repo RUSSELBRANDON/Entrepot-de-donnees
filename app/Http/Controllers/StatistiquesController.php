@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class StatistiquesController extends Controller
 {
+    // Nombre de villes distinctes
+    public function nombreVilles()
+    {
+        $count = User::distinct('ville')->whereNotNull('ville')->count('ville');
+        return response()->json(['nombre_villes' => $count]);
+    }
     // Nombre total d'utilisateurs
     public function nombreUtilisateurs()
     {

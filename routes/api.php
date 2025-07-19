@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Http\Request;
@@ -6,6 +7,12 @@ use App\Http\Controllers\Authentification\AuthController;
 use App\Http\Controllers\Authentification\PasswordController;
 use App\Http\Controllers\Authentification\ProfileController;
 use App\Http\Controllers\StatistiquesController;
+use App\Http\Controllers\SecteurController;
+
+// Secteurs populaires
+Route::get('secteurs/populaires', [SecteurController::class, 'secteursPopulaires']);
+// Entreprises par catégories
+Route::get('secteurs/entreprises', [SecteurController::class, 'entreprisesParCategorie']);
 
 // Statistiques routes
 Route::prefix('stats')->group(function () {
@@ -13,6 +20,7 @@ Route::prefix('stats')->group(function () {
     Route::get('entreprises', [StatistiquesController::class, 'nombreEntreprises']);
     Route::get('secteurs', [StatistiquesController::class, 'nombreSecteurs']);
     Route::get('moyenne-notes', [StatistiquesController::class, 'moyenneNotes']);
+    Route::get('villes', [StatistiquesController::class, 'nombreVilles']);
 });
 
 // Auth routes
